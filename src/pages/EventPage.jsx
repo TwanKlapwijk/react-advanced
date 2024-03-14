@@ -31,9 +31,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 
 export const Loader = async ({ params }) => {
   const users = await fetch("http://localhost:3000/users");
-  const event = await fetch(
-    `http://localhost:3000/events/?id=${params.eventId}`
-  );
+  const event = await fetch(`http://localhost:3000/events/${params.eventId}`);
   const categories = await fetch(`http://localhost:3000/categories`);
 
   return {
@@ -45,7 +43,7 @@ export const Loader = async ({ params }) => {
 
 export const EventPage = () => {
   const { users, eventData, categories } = useLoaderData();
-  const event = eventData[0];
+  const event = eventData;
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigator = useNavigate();

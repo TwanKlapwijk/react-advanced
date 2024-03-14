@@ -17,7 +17,7 @@ export const EventCard = ({ event, categories }) => {
   };
   const matchedCategories = filterEventCategories(event.categoryIds);
 
-  function formatTimestamp(timestampStr) {
+  function formatDate(timestampStr) {
     const timestamp = new Date(timestampStr);
 
     const options = {
@@ -31,8 +31,8 @@ export const EventCard = ({ event, categories }) => {
 
     return new Intl.DateTimeFormat("nl-NL", options).format(timestamp);
   }
-  const eventStartTime = formatTimestamp(event.startTime);
-  const eventEndTime = formatTimestamp(event.endTime);
+  const eventStartTime = formatDate(event.startTime);
+  const eventEndTime = formatDate(event.endTime);
 
   return (
     <Card

@@ -69,7 +69,7 @@ export const EventPage = () => {
     onOpenDelete();
   };
 
-  function formatTimestamp(timestampStr) {
+  function formatDate(timestampStr) {
     const timestamp = new Date(timestampStr);
 
     const options = {
@@ -83,8 +83,8 @@ export const EventPage = () => {
 
     return new Intl.DateTimeFormat("nl-NL", options).format(timestamp);
   }
-  const startTime = formatTimestamp(event.startTime);
-  const endTime = formatTimestamp(event.endTime);
+  const startTime = formatDate(event.startTime);
+  const endTime = formatDate(event.endTime);
 
   const filterEventCategories = (categoryIds) => {
     return categories.filter((category) => {

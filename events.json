@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Ignacio Doe",
+      "image": "https://global-uploads.webflow.com/5eecfecbe625d195e35b89f2/624bfb093da7d92733c001c0_Ignacio%20Villafruela%20Rodr%C3%ADguez.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Jane Bennett",
+      "image": "https://global-uploads.webflow.com/5eecfecbe625d195e35b89f2/624bfb401d7131c760ca1c63_Elieska%20Lensink.jpg"
+    }
+  ],
+  "events": [
+    {
+      "id": "1304",
+      "createdBy": "1",
+      "title": "Knikker toernooi",
+      "description": "We gaan lekker knikkeren",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Marbles_01.JPG",
+      "categoryIds": [
+        "1"
+      ],
+      "location": "nederland",
+      "startTime": "2024-03-16T15:16",
+      "endTime": "2024-03-25T15:16"
+    },
+    {
+      "id": "4177",
+      "createdBy": "2",
+      "title": "Tennis toernooi",
+      "description": "We gaan lekker tennissen ",
+      "image": "https://storage.pubble.nl/96897487/content/2023/7/be73a047-893a-4423-b9ae-d2725d786a52_thumb1920.jpg",
+      "categoryIds": [
+        "1",
+        "3"
+      ],
+      "location": "nederland",
+      "startTime": "2024-03-29T15:33",
+      "endTime": "2024-03-30T15:33"
+    },
+    {
+      "id": "1680",
+      "createdBy": "2",
+      "title": "Voetbal toernooi",
+      "description": "We gaan lekker voetballen",
+      "image": "https://www.fotobehang.nl/media/catalog/product/cache/871f459736130e239a3f5e6472128962/v/o/voetbal-met-veel-kracht.jpg",
+      "categoryIds": [
+        "1"
+      ],
+      "location": "nederland",
+      "startTime": "2024-03-28T15:43",
+      "endTime": "2024-03-30T15:43"
+    }
+  ],
+  "categories": [
+    {
+      "name": "sports",
+      "id": "1"
+    },
+    {
+      "name": "games",
+      "id": "2"
+    },
+    {
+      "name": "relaxation",
+      "id": "3"
+    }
+  ]
+}

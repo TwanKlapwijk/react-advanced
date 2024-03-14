@@ -17,3 +17,15 @@ export const handleChange = (e, formData, setFormData) => {
   const { name, value } = e.target;
   setFormData({ ...formData, [name]: value });
 };
+
+export const handleUserChange = (userId, formData, setFormData) => {
+  setFormData({ ...formData, createdBy: userId });
+};
+
+export const handleCheckboxChange = (categoryId, formData, setFormData) => {
+  const updatedCategoryIds = formData.categoryIds.includes(categoryId)
+    ? formData.categoryIds.filter((id) => id !== categoryId)
+    : [...formData.categoryIds, categoryId];
+
+  setFormData({ ...formData, categoryIds: updatedCategoryIds });
+};

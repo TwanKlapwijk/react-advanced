@@ -27,7 +27,7 @@
     },
     {
       "id": "4177",
-      "createdBy": "2",
+      "createdBy": "1",
       "title": "Tennis toernooi",
       "description": "We gaan lekker tennissen ",
       "image": "https://storage.pubble.nl/96897487/content/2023/7/be73a047-893a-4423-b9ae-d2725d786a52_thumb1920.jpg",
@@ -41,13 +41,12 @@
     },
     {
       "id": "1680",
-      "createdBy": "2",
+      "createdBy": "1",
       "title": "Voetbal toernooi",
       "description": "We gaan lekker voetballen",
       "image": "https://www.fotobehang.nl/media/catalog/product/cache/871f459736130e239a3f5e6472128962/v/o/voetbal-met-veel-kracht.jpg",
       "categoryIds": [
-        "1",
-        "3"
+        "1"
       ],
       "location": "nederland",
       "startTime": "2024-03-02T15:43",

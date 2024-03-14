@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate, handleChange } from "../Functions";
+import { formatDate, handleChange, handleUserChange, handleCheckboxChange } from "../Functions";
 import {
   Card,
   FormLabel,
@@ -83,18 +83,6 @@ export const EventPage = () => {
   };
 
   const createdBy = findCreatorEvent()[0];
-
-  const handleUserChange = (userId) => {
-    setFormData({ ...formData, createdBy: userId });
-  };
-
-  const handleCheckboxChange = (categoryId) => {
-    const updatedCategoryIds = formData.categoryIds.includes(categoryId)
-      ? formData.categoryIds.filter((id) => id !== categoryId)
-      : [...formData.categoryIds, categoryId];
-
-    setFormData({ ...formData, categoryIds: updatedCategoryIds });
-  };
 
   const confirmDeleteEvent = async () => {
     try {
@@ -249,6 +237,15 @@ export const EventPage = () => {
                     onChange={(e) => handleChange(e, formData, setFormData)}
                   />
                 </FormControl>
+                <FormControl id="image" isRequired>
+                  <FormLabel>Image link</FormLabel>
+                  <Input
+                    variant={"filled"}
+                    name="image"
+                    value={formData.image}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
+                </FormControl>
                 <FormControl id="description" isRequired>
                   <FormLabel>Description</FormLabel>
                   <Input
@@ -258,28 +255,6 @@ export const EventPage = () => {
                     onChange={(e) => handleChange(e, formData, setFormData)}
                   />
                 </FormControl>
-                <FormControl id="image" isRequired>
-                  <FormLabel>Image URL</FormLabel>
-                  <Input
-                    variant={"filled"}
-                    name="image"
-                    value={formData.image}
-                    onChange={(e) => handleChange(e, formData, setFormData)}
-                  />
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel>User</FormLabel>
-                  <Select
-                    placeholder="Select user"
-                    value={formData.createdBy}
-                    onChange={(e) => handleUserChange(e.target.value)}>
-                    {users.map((user) => (
-                      <option key={user.id} value={user.id}>
-                        {user.name}
-                      </option>
-                    ))}
-                  </Select>
-                </FormControl>
                 <FormControl>
                   <FormLabel>Categories</FormLabel>
                   <Stack spacing={3}>
@@ -287,13 +262,26 @@ export const EventPage = () => {
                       <Checkbox
                         key={category.id}
                         isChecked={formData.categoryIds.includes(category.id)}
-                        onChange={() => handleCheckboxChange(category.id)}>
+                        onChange={() => handleCheckboxChange(category.id, formData, setFormData)}>
                         {category.name}
                       </Checkbox>
                     ))}
                   </Stack>
-                  <FormHelperText>Choose a category</FormHelperText>
                 </FormControl>
+                <FormControl isRequired>
+                  <FormLabel>User</FormLabel>
+                  <Select
+                    placeholder="Select user"
+                    value={formData.createdBy}
+                    onChange={(e) => handleUserChange(e.target.value, formData, setFormData)}>
+                    {users.map((user) => (
+                      <option key={user.id} value={user.id}>
+                        {user.name}
+                      </option>
+                    ))}
+                  </Select>
+                </FormControl>
+
                 <FormControl id="location" isRequired>
                   <FormLabel>Location</FormLabel>
                   <Input

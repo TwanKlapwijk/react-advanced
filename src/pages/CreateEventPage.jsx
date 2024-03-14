@@ -12,7 +12,7 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import { handleChange } from "../Functions";
+import { handleChange, handleUserChange, handleCheckboxChange } from "../Functions";
 
 export const Loader = async ({ params }) => {
   const users = await fetch(`http://localhost:3000/users`);
@@ -40,18 +40,6 @@ export const NewEventPage = () => {
     startTime: "",
     endTime: "",
   });
-
-  const handleUserChange = (userId) => {
-    setFormData({ ...formData, createdBy: userId });
-  };
-
-  const handleCheckboxChange = (categoryId) => {
-    const updatedCategoryIds = formData.categoryIds.includes(categoryId)
-      ? formData.categoryIds.filter((id) => id !== categoryId)
-      : [...formData.categoryIds, categoryId];
-
-    setFormData({ ...formData, categoryIds: updatedCategoryIds });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -154,7 +142,7 @@ export const NewEventPage = () => {
                 <Checkbox
                   key={category.id}
                   isChecked={formData.categoryIds.includes(category.id)}
-                  onChange={() => handleCheckboxChange(category.id)}>
+                  onChange={() => handleCheckboxChange(category.id, formData, setFormData)}>
                   {category.name}
                 </Checkbox>
               ))}
@@ -165,7 +153,7 @@ export const NewEventPage = () => {
             <Select
               placeholder="Select a user"
               value={formData.createdBy}
-              onChange={(e) => handleUserChange(e.target.value)}>
+              onChange={(e) => handleUserChange(e.target.value, formData, setFormData)}>
               {users.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.name}

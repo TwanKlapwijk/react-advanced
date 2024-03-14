@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Navigation.css";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   return (
@@ -10,7 +10,7 @@ export const Navigation = () => {
           <Link to="/">Events</Link>
         </li>
         <li className="event-add-btn">
-          <Link to="/event/new">Add new event</Link>
+          <Link to="/event/create">Add new event</Link>
         </li>
       </ul>
     </nav>

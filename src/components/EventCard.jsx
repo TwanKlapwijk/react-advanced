@@ -1,14 +1,6 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  Text,
-  Stack,
-  CardHeader,
-  Box,
-  Heading,
-} from "@chakra-ui/react";
-
+import { Card, CardBody, Text, Stack, CardHeader, Box, Heading } from "@chakra-ui/react";
+import { formatDate } from "../FormatDataFn";
 export const EventCard = ({ event, categories }) => {
   const filterEventCategories = (categoryIds) => {
     return categories.filter((category) => {
@@ -17,46 +9,25 @@ export const EventCard = ({ event, categories }) => {
   };
   const matchedCategories = filterEventCategories(event.categoryIds);
 
-  function formatDate(timestampStr) {
-    const timestamp = new Date(timestampStr);
-
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: false,
-    };
-
-    return new Intl.DateTimeFormat("nl-NL", options).format(timestamp);
-  }
   const eventStartTime = formatDate(event.startTime);
   const eventEndTime = formatDate(event.endTime);
 
   return (
-    <Card
-      height={{ base: "360px" }}
-      width={{ base: "250px" }}
-      borderRadius={"2xl"}
-      overflow={"hidden"}
-    >
+    <Card height={{ base: "360px" }} width={{ base: "250px" }} borderRadius={"2xl"} overflow={"hidden"}>
       <CardHeader width={"200px"} padding={0}>
         <Box
           backgroundImage={`url(${event.image})`}
           backgroundSize="cover"
           backgroundPosition="center"
           height={{ base: "125px" }}
-          width={"250px"}
-        ></Box>
+          width={"250px"}></Box>
       </CardHeader>
       <CardBody
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
         textAlign={"center"}
-        padding={"0.25rem"}
-      >
+        padding={"0.25rem"}>
         <Stack spacing={".75rem"}>
           <Heading fontSize={"1.5rem"}>{event.title}</Heading>
           <Text>
@@ -65,12 +36,7 @@ export const EventCard = ({ event, categories }) => {
             </Text>{" "}
             {event.description}
           </Text>
-          <Box
-            display={"flex"}
-            flexWrap={"wrap"}
-            justifyContent={"center"}
-            gap={"8px"}
-          >
+          <Box display={"flex"} flexWrap={"wrap"} justifyContent={"center"} gap={"8px"}>
             <Text fontSize={"1.1rem"} fontWeight={"500"}>
               Categories:{" "}
             </Text>

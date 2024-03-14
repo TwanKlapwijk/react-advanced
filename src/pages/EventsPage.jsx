@@ -1,15 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  Heading,
-  Box,
-  Flex,
-  Input,
-  FormControl,
-  FormLabel,
-  Stack,
-  Checkbox,
-} from "@chakra-ui/react";
+import { Heading, Box, Flex, Input, FormControl, FormLabel, Stack, Checkbox } from "@chakra-ui/react";
 import { EventCard } from "../components/EventCard";
 import { Link } from "react-router-dom";
 
@@ -37,22 +28,19 @@ export const EventsPage = () => {
     setCategories(categoryData);
   };
 
+  const filteredEvents = events.filter(
+    (event) =>
+      (event.title.toLowerCase().includes(searchInput.toLowerCase()) && selectedCategories.length === 0) ||
+      event.categoryIds.some((id) => selectedCategories.includes(id))
+  );
+
   const handleCategoryChange = (categoryId) => {
     if (selectedCategories.includes(categoryId)) {
-      setSelectedCategories(
-        selectedCategories.filter((id) => id !== categoryId)
-      );
+      setSelectedCategories(selectedCategories.filter((id) => id !== categoryId));
     } else {
       setSelectedCategories([...selectedCategories, categoryId]);
     }
   };
-
-  const filteredEvents = events.filter(
-    (event) =>
-      (event.title.toLowerCase().includes(searchInput.toLowerCase()) &&
-        selectedCategories.length === 0) ||
-      event.categoryIds.some((id) => selectedCategories.includes(id))
-  );
 
   return (
     <Box
@@ -62,8 +50,7 @@ export const EventsPage = () => {
       display={"flex"}
       alignItems={"center"}
       flexDirection={"column"}
-      padding={"0 1rem 0 1rem"}
-    >
+      padding={"0 1rem 0 1rem"}>
       <Heading as={"h1"} marginTop={"1.5rem"}>
         Twan's event list exercise
       </Heading>
@@ -85,8 +72,7 @@ export const EventsPage = () => {
         flexDirection={"column"}
         justifyContent={"center"}
         display={"flex"}
-        textAlign={"center"}
-      >
+        textAlign={"center"}>
         <Stack
           width={"500px"}
           display={"flex"}
@@ -95,8 +81,7 @@ export const EventsPage = () => {
           alignItems={"center"}
           justifyContent={"center"}
           spacing={2}
-          textAlign={"center"}
-        >
+          textAlign={"center"}>
           <FormLabel margin={"0"}>Categories:</FormLabel>
           {categories.map((category) => (
             <Checkbox
@@ -104,8 +89,7 @@ export const EventsPage = () => {
               justifyContent={"center"}
               key={category.id}
               isChecked={selectedCategories.includes(category.id)}
-              onChange={() => handleCategoryChange(category.id)}
-            >
+              onChange={() => handleCategoryChange(category.id)}>
               {category.name}
             </Checkbox>
           ))}
@@ -119,8 +103,7 @@ export const EventsPage = () => {
         flexWrap={"wrap"}
         gap={"1.25rem"}
         justifyContent={"center"}
-        alignItems={"center"}
-      >
+        alignItems={"center"}>
         {categories.length >= 1 &&
           events.length >= 1 &&
           filteredEvents.map((event) => (

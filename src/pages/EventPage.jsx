@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate } from "../FormatDataFn";
+import { formatDate, handleChange } from "../Functions";
 import {
   Card,
   FormLabel,
@@ -83,11 +83,6 @@ export const EventPage = () => {
   };
 
   const createdBy = findCreatorEvent()[0];
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleUserChange = (userId) => {
     setFormData({ ...formData, createdBy: userId });
@@ -247,15 +242,30 @@ export const EventPage = () => {
               <Stack height={"100%"} spacing={"0.5rem"}>
                 <FormControl id="title" isRequired>
                   <FormLabel>Title</FormLabel>
-                  <Input variant={"filled"} name="title" value={formData.title} onChange={handleChange} />
+                  <Input
+                    variant={"filled"}
+                    name="title"
+                    value={formData.title}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
                 </FormControl>
                 <FormControl id="description" isRequired>
                   <FormLabel>Description</FormLabel>
-                  <Input variant={"filled"} name="description" value={formData.description} onChange={handleChange} />
+                  <Input
+                    variant={"filled"}
+                    name="description"
+                    value={formData.description}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
                 </FormControl>
                 <FormControl id="image" isRequired>
                   <FormLabel>Image URL</FormLabel>
-                  <Input variant={"filled"} name="image" value={formData.image} onChange={handleChange} />
+                  <Input
+                    variant={"filled"}
+                    name="image"
+                    value={formData.image}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
                 </FormControl>
                 <FormControl isRequired>
                   <FormLabel>User</FormLabel>
@@ -286,15 +296,30 @@ export const EventPage = () => {
                 </FormControl>
                 <FormControl id="location" isRequired>
                   <FormLabel>Location</FormLabel>
-                  <Input variant={"filled"} name="location" value={formData.location} onChange={handleChange} />
+                  <Input
+                    variant={"filled"}
+                    name="location"
+                    value={formData.location}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
                 </FormControl>
                 <FormControl id="startTime" isRequired>
                   <FormLabel>Start Time</FormLabel>
-                  <Input type="datetime-local" name="startTime" value={formData.startTime} onChange={handleChange} />
+                  <Input
+                    type="datetime-local"
+                    name="startTime"
+                    value={formData.startTime}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
                 </FormControl>
                 <FormControl id="endTime" isRequired>
                   <FormLabel>End Time</FormLabel>
-                  <Input type="datetime-local" name="endTime" value={formData.endTime} onChange={handleChange} />
+                  <Input
+                    type="datetime-local"
+                    name="endTime"
+                    value={formData.endTime}
+                    onChange={(e) => handleChange(e, formData, setFormData)}
+                  />
                 </FormControl>
               </Stack>
             </Box>

@@ -12,6 +12,7 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
+import { handleChange } from "../Functions";
 
 export const Loader = async ({ params }) => {
   const users = await fetch(`http://localhost:3000/users`);
@@ -39,11 +40,6 @@ export const NewEventPage = () => {
     startTime: "",
     endTime: "",
   });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleUserChange = (userId) => {
     setFormData({ ...formData, createdBy: userId });
@@ -125,7 +121,7 @@ export const NewEventPage = () => {
               backgroundColor={"white"}
               name="title"
               value={formData.title}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formData, setFormData)}
             />
           </FormControl>
           <FormControl id="image" isRequired>
@@ -136,7 +132,7 @@ export const NewEventPage = () => {
               backgroundColor={"white"}
               name="image"
               value={formData.image}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formData, setFormData)}
             />
           </FormControl>
           <FormControl id="description" isRequired>
@@ -147,7 +143,7 @@ export const NewEventPage = () => {
               backgroundColor={"white"}
               name="description"
               value={formData.description}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formData, setFormData)}
             />
           </FormControl>
 
@@ -185,16 +181,26 @@ export const NewEventPage = () => {
               backgroundColor={"white"}
               name="location"
               value={formData.location}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formData, setFormData)}
             />
           </FormControl>
           <FormControl id="startTime" isRequired>
             <FormLabel>Start Date</FormLabel>
-            <Input type="datetime-local" name="startTime" value={formData.startTime} onChange={handleChange} />
+            <Input
+              type="datetime-local"
+              name="startTime"
+              value={formData.startTime}
+              onChange={(e) => handleChange(e, formData, setFormData)}
+            />
           </FormControl>
           <FormControl id="endTime" isRequired>
             <FormLabel>End Date</FormLabel>
-            <Input type="datetime-local" name="endTime" value={formData.endTime} onChange={handleChange} />
+            <Input
+              type="datetime-local"
+              name="endTime"
+              value={formData.endTime}
+              onChange={(e) => handleChange(e, formData, setFormData)}
+            />
           </FormControl>
           <Button width={"xl"} type="submit" colorScheme="purple" mt={4}>
             Create Event

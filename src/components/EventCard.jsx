@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, Text, Stack, CardHeader, Box, Heading } from "@chakra-ui/react";
-import { formatDate } from "../FormatDataFn";
+import { formatDate } from "../Functions";
 export const EventCard = ({ event, categories }) => {
   const filterEventCategories = (categoryIds) => {
     return categories.filter((category) => {

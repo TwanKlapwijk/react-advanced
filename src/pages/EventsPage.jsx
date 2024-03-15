@@ -69,31 +69,22 @@ export const EventsPage = () => {
 
       <FormControl
         alignItems={"center"}
-        flexDirection={"column"}
+        flexDirection={"row"}
+        gap={"1rem"}
         justifyContent={"center"}
         display={"flex"}
         textAlign={"center"}>
-        <Stack
-          width={"500px"}
-          display={"flex"}
-          flexDirection={"row"}
-          gap={".5rem"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          spacing={2}
-          textAlign={"center"}>
-          <FormLabel margin={"0"}>Categories:</FormLabel>
-          {categories.map((category) => (
-            <Checkbox
-              display={"flex"}
-              justifyContent={"center"}
-              key={category.id}
-              isChecked={selectedCategories.includes(category.id)}
-              onChange={() => handleCategoryChange(category.id)}>
-              {category.name}
-            </Checkbox>
-          ))}
-        </Stack>
+        <FormLabel margin={"0"}>Categories:</FormLabel>
+        {categories.map((category) => (
+          <Checkbox
+            display={"flex"}
+            justifyContent={"center"}
+            key={category.id}
+            isChecked={selectedCategories.includes(category.id)}
+            onChange={() => handleCategoryChange(category.id)}>
+            {category.name}
+          </Checkbox>
+        ))}
       </FormControl>
 
       <Flex

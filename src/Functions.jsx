@@ -1,16 +1,30 @@
-export function formatDate(timestampStr) {
-  const timestamp = new Date(timestampStr);
+export function formatDate(timestampString) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  };
+  const timestamp = new Date(timestampString);
+  const year = timestamp.getFullYear();
+  const month = months[timestamp.getMonth()];
+  const day = timestamp.getDate();
+  let hour = timestamp.getHours();
+  let minute = timestamp.getMinutes();
 
-  return new Intl.DateTimeFormat("nl-NL", options).format(timestamp);
+  hour = hour < 10 ? "0" + hour : hour;
+  minute = minute < 10 ? "0" + minute : minute;
+
+  return `${day} ${month} ${year} ${hour}:${minute}`;
 }
 
 export const handleChange = (e, formData, setFormData) => {

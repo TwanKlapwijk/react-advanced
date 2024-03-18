@@ -161,7 +161,7 @@ export const EventPage = () => {
       justifyContent="center"
       minHeight="100vh"
       alignItems="center">
-      <Card minWidth={{ base: "100%", md: "800px" }} maxWidth={"800px"}>
+      <Card minWidth={{ base: "100%", md: "650px" }} maxWidth={"650px"}>
         <CardHeader padding={"0.75rem"}>
           <Box
             borderRadius={"lg"}
